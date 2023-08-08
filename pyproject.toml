@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling","faker","docker","pandas","neo4j","pyTigerGraph"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graph_database_stress_testing"
+version = "0.0.1"
+authors = [
+  { name="Logan Lawson", email="logan.lawson@nzta.govt.nz" },
+]
+description = "Rudimentary stress testing for graph databases."
+readme = "readme.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
