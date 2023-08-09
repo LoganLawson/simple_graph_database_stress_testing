@@ -2,11 +2,7 @@ from faker import Faker
 import pandas as pd
 import yaml
 
-
-def get_config(config_path):
-    with open(config_path) as file:
-        config = yaml.load(file, Loader=yaml.FullLoader)
-    return config
+from src.graph_database_stress_testing.utilities.configuration import get_config
 
 
 def _generate_properties(properties: dict, n: int, faker: Faker):
