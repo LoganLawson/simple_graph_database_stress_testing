@@ -33,6 +33,7 @@ def _generate_nodes_edges(faker_config: dict, seed=0):
 
     edges = {}
     for edge_type, edge_config in faker_config['edges'].items():
+
         source = nodes[edge_config['source']]
         target = nodes[edge_config['target']]
 
@@ -41,11 +42,16 @@ def _generate_nodes_edges(faker_config: dict, seed=0):
         target_id = target['id'].sample(
             edge_config['n'], replace=True).reset_index(drop=True)
 
-        edges[edge_type] = pd.DataFrame({
-            'source': source_id,
-            'target': target_id,
-            'type': edge_type
-        })
+        properties = _generate_properties(
+            edge_config['properties'], node_config['n'], fake)
+        
+        df = pd.DataFrame(properties)
+        df['source'] = source_id
+        df['target'] = target_id
+        df['type'] = edge_type
+
+
+        edges[edge_type] = df
 
     return nodes, edges
 
