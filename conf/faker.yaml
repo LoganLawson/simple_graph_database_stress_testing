@@ -1,0 +1,46 @@
+# values indicate faker provider type for generating data
+n_nodes: &n_nodes 10000
+n_edges: &n_edges 10000
+
+nodes:
+  person:
+    n: *n_nodes
+    properties:
+      name: name
+      job: job
+
+  company:
+    n: *n_nodes
+    properties:
+      name: company
+      phone: phone_number
+
+  address:
+    n: *n_nodes
+    properties:
+      address: address
+
+edges:
+  works_for:
+    n: *n_edges
+    source: person
+    target: company
+    properties:
+      start_date: date
+      end_date: date
+
+  lives_at:
+    n: *n_edges
+    source: person
+    target: address
+    properties:
+      start_date: date
+      end_date: date
+
+  located_at:
+    n: *n_edges
+    source: company
+    target: address
+    properties:
+      start_date: date
+      end_date: date

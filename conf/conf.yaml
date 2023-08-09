@@ -1,0 +1,24 @@
+docker:
+  cores:
+  memory:
+
+data:
+  path: data/
+  faker_conf: conf/faker.yaml
+  
+  
+
+logging: 
+  path: logs/
+
+
+neo4j:
+  host:
+  user:
+  password:
+
+tigergraph:
+  host:
+  user:
+  password:
+
