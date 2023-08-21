@@ -1,5 +1,5 @@
 docker:
-  cores: 2
+  cpus: 2
   memory: 4G
 
 data:
@@ -7,7 +7,7 @@ data:
   faker_conf: conf/faker.yaml
 
 logging:
-  path: logs/
+  log_dir: logs/
 
 neo4j:
   uri: neo4j://localhost:7687
