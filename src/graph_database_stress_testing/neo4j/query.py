@@ -4,14 +4,16 @@ from multiprocessing import Pool
 
 
 def query(uri, user, password, query_string):
-    with GraphDatabase.driver(uri, auth=(user, password)).session(database='neo4j') as session:
-        result = session.run(query_string)
-        records = [record.data() for record in result]
+    with GraphDatabase.driver(uri, auth=(user, password)) as driver:
+        with driver.session(database='neo4j') as session:
+            result = session.run(query_string)
+            records = [record.data() for record in result]
     return records
 
 
-def concurrent_queries(uri, user, password, query_string, n_processes=4):
-    with Pool(n_processes) as pool:
-        response = pool.starmap(
-            query, [(uri, user, password, query_string)] * n_processes)
-    return response
+async def concurrent_query(uri, user, password, query_string):
+    async with AsyncGraphDatabase.driver(uri, auth=(user, password)) as driver:
+        async with driver.session(database='neo4j') as session:
+            result = await session.run(query_string)
+            records = [record.data() async for record in result]
+    return records
