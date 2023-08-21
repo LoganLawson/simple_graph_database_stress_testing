@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling","faker","docker","pandas","neo4j","pyTigerGraph"]
+requires = ["hatchling","pyyaml","faker","docker","pandas","neo4j","pyTigerGraph","plotly"]
 build-backend = "hatchling.build"
 
 [project]
