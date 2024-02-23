@@ -1,0 +1,21 @@
+docker:
+  cpus: 2
+  memory: 4G
+
+data:
+  path: data/
+  faker_conf: conf/faker.yaml
+
+logging:
+  log_dir: logs/
+
+neo4j:
+  uri: neo4j://localhost:7687
+  user: neo4j
+  password: password
+
+tigergraph:
+  uri: neo4j://localhost:7687
+  auth:
+    username: neo4j
+    password: password
